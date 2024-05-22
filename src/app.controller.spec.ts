@@ -5,6 +5,10 @@ import {GameService} from "./domain/services/GameService";
 import {GameFileRepository} from "./infractructure/repositories/GameFileRepository";
 import {Sign} from "./domain/models/game/sign";
 import {HttpException} from "@nestjs/common";
+import {GameProgressListener} from "./domain/listener/GameProgressListener";
+import {StatisticsService} from "./domain/services/statistics.service";
+import {StatisticsRepository} from "./infractructure/repositories/statistics.repository";
+import {DefaultGameView} from "./application/view/default-game.view";
 
 describe('AppController', () => {
   let appController: AppController;
@@ -13,7 +17,7 @@ describe('AppController', () => {
   beforeAll(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService, GameService, GameFileRepository],
+      providers: [AppService, GameService, GameFileRepository, GameProgressListener, StatisticsService, StatisticsRepository, DefaultGameView],
     }).compile();
 
     appController = app.get<AppController>(AppController);

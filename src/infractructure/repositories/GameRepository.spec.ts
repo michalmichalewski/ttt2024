@@ -2,6 +2,9 @@ import {GameFileRepository} from "./GameFileRepository";
 import {GameService} from "../../domain/services/GameService";
 import {GameFactory} from "../../domain/factories/GameFactory";
 import {Test, TestingModule} from "@nestjs/testing";
+import {GameProgressListener} from "../../domain/listener/GameProgressListener";
+import {StatisticsService} from "../../domain/services/statistics.service";
+import {StatisticsRepository} from "./statistics.repository";
 
 describe('Game repository', ( () => {
 
@@ -11,7 +14,7 @@ describe('Game repository', ( () => {
     beforeAll(async () => {
         const app: TestingModule = await Test.createTestingModule({
             controllers: [],
-            providers: [GameService, GameFileRepository],
+            providers: [GameService, GameFileRepository, GameProgressListener, StatisticsService, StatisticsRepository],
         }).compile();
 
         gameRepository = app.get<GameFileRepository>(GameFileRepository);

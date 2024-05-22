@@ -1,7 +1,7 @@
 import {GameFactory} from "./GameFactory";
 import {Game} from "../models/game";
 import {GameState} from "../models/game/gameState";
-import {Piece} from "../models/game/piece";
+import {Sign} from "../models/game/sign";
 import {Player} from "../models/game/player";
 
 describe('Game factory', () => {
@@ -29,7 +29,7 @@ describe('Game factory', () => {
     });
 
     it('should create game with set of two players', function () {
-        expect(game.getPlayerByPiece(Piece.x)).toBeInstanceOf(Player);
-        expect(game.getPlayerByPiece(Piece.o)).toBeInstanceOf(Player);
+        expect(game.getPlayerByPiece(Sign.x)).toBeInstanceOf(Player);
+        expect(game.getPlayerByPiece(Sign.o)).toBeInstanceOf(Player);
     });
 });

@@ -3,6 +3,10 @@ import {AppService} from "../../app.service";
 import {GameService} from "./GameService";
 import {GameFileRepository} from "../../infractructure/repositories/GameFileRepository";
 import {Game} from "../models/game";
+import {GameProgressListener} from "../listener/GameProgressListener";
+import {StatisticsService} from "./statistics.service";
+import {StatisticsRepository} from "../../infractructure/repositories/statistics.repository";
+import {DefaultGameView} from "../../application/view/default-game.view";
 
 describe('GameService', () => {
 
@@ -10,7 +14,7 @@ describe('GameService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [AppService, GameService, GameFileRepository],
+            providers: [AppService, GameService, GameFileRepository, GameProgressListener, StatisticsService, StatisticsRepository, DefaultGameView],
         }).compile();
 
         service = module.get<GameService>(GameService);

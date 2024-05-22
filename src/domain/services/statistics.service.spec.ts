@@ -1,7 +1,7 @@
 import {Test, TestingModule} from "@nestjs/testing";
 import {StatisticsService} from "./statistics.service";
 import {StatisticsRepository} from "../../infractructure/repositories/statistics.repository";
-import {Piece} from "../models/game/piece";
+import {Sign} from "../models/game/sign";
 
 describe('statistics repository', () => {
 
@@ -25,7 +25,7 @@ describe('statistics repository', () => {
 
     it('should write statistics to file', async () => {
         const aaa = await service.getStatistics()
-        await service.addWinningPointsTo(Piece.x)
+        await service.addWinningPointsTo(Sign.x)
         const afterSave = await service.getStatistics()
         expect(afterSave).toEqual({x: 1, o: 0})
     })
